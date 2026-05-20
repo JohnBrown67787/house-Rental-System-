@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact Us - Buea Rentals</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e3f2fd",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101a22",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<!-- Top Navigation Bar -->
+<header class="border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-16">
+<div class="flex items-center gap-3">
+<div class="text-blue-600">
+<svg class="w-8 h-8" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<span class="text-xl font-bold tracking-tight">Buea Rentals</span>
+</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-sm font-medium hover:text-blue-600 transition-colors" href="#">Home</a>
+<a class="text-sm font-medium hover:text-blue-600 transition-colors" href="#">Rentals</a>
+<a class="text-sm font-medium hover:text-blue-600 transition-colors" href="#">About</a>
+<a class="text-sm font-medium text-blue-600" href="#">Contact</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="bg-primary text-slate-900 px-5 py-2 rounded-lg text-sm font-bold hover:bg-blue-100 transition-colors">
+                        Sign In
+                    </button>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<!-- Hero Section -->
+<div class="relative overflow-hidden rounded-xl mb-12 bg-slate-900 h-64 flex items-center justify-center text-center">
+<div class="absolute inset-0 opacity-40 bg-cover bg-center" data-alt="Modern office building in a green environment" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBeU3wn-VZj4KJfGphk2BwyXYqt3Z63TRAfJgl16TR8qoY2-tJuqkfdZtXFekf8TXxZ2us1Tr1mrFHP6iuJ94eG-atJkEA7mfcbubrPbCRne2P4awcbcDDJYbpE2dwIdBOXaaIrUfTPzW6Ja-gDijxvYQZYZrgkUb0-cRyzBbQ5sZNHrdl0wHX5RLuE9GT11MvS73M4ElLzWOEbIBPVavdt21w0zWUvt_tX9tbR9Ia8eCSKX4WWoVWr53InhT44xgC4AICiQgqTx4p6');"></div>
+<div class="relative z-10 px-4">
+<h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Get in Touch</h1>
+<p class="text-blue-100 text-lg max-w-2xl mx-auto">Have questions about our rentals near the University of Buea? Our Molyko team is here to help you find your next home.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+<!-- Contact Form -->
+<div class="lg:col-span-2">
+<div class="bg-white dark:bg-slate-900 p-8 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800">
+<h2 class="text-2xl font-bold mb-6">Send us a message</h2>
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium mb-2">Full Name</label>
+<input class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="John Doe" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium mb-2">Email Address</label>
+<input class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="john@example.com" type="email"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium mb-2">Subject</label>
+<input class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="Inquiry about Molyko Apartments" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium mb-2">Message</label>
+<textarea class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="Tell us what you're looking for..." rows="5"></textarea>
+</div>
+<button class="w-full md:w-auto bg-blue-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-200 dark:shadow-none" type="submit">
+                            Send Message
+                        </button>
+</form>
+</div>
+</div>
+<!-- Contact Info Sidebar -->
+<div class="space-y-6">
+<!-- Info Card 1 -->
+<div class="bg-primary/30 dark:bg-blue-900/20 p-6 rounded-xl border border-blue-100 dark:border-blue-800">
+<div class="flex items-center gap-4 mb-4">
+<div class="p-3 bg-white dark:bg-slate-800 rounded-lg text-blue-600 shadow-sm">
+<span class="material-symbols-outlined">location_on</span>
+</div>
+<h3 class="font-bold text-lg">Visit Us</h3>
+</div>
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Molyko, Main Street<br/>
+                        Opposite University of Buea<br/>
+                        Buea, SW Region, Cameroon
+                    </p>
+</div>
+<!-- Info Card 2 -->
+<div class="bg-primary/30 dark:bg-blue-900/20 p-6 rounded-xl border border-blue-100 dark:border-blue-800">
+<div class="flex items-center gap-4 mb-4">
+<div class="p-3 bg-white dark:bg-slate-800 rounded-lg text-blue-600 shadow-sm">
+<span class="material-symbols-outlined">call</span>
+</div>
+<h3 class="font-bold text-lg">Call Us</h3>
+</div>
+<p class="text-slate-600 dark:text-slate-400">+237 6XX XXX XXX</p>
+<p class="text-slate-600 dark:text-slate-400">+237 2XX XX XX XX</p>
+</div>
+<!-- Info Card 3 -->
+<div class="bg-primary/30 dark:bg-blue-900/20 p-6 rounded-xl border border-blue-100 dark:border-blue-800">
+<div class="flex items-center gap-4 mb-4">
+<div class="p-3 bg-white dark:bg-slate-800 rounded-lg text-blue-600 shadow-sm">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<h3 class="font-bold text-lg">Email Us</h3>
+</div>
+<p class="text-slate-600 dark:text-slate-400">support@buearentals.com</p>
+<p class="text-slate-600 dark:text-slate-400">info@buearentals.com</p>
+</div>
+<!-- Static Map Placeholder -->
+<div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 h-48 bg-slate-200 relative">
+<img class="w-full h-full object-cover grayscale opacity-80" data-alt="Stylized map showing Buea Molyko area" data-location="Buea" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOx1crVgO5onrcBsz9PSqpkDxYAe3dpzdLsJX34mmfKf4k9xYDax_lC35mGMB12_04YeNm1EkoEIWQX7375TNpNbhOKxqFiGH8DbAY4akOZj_Hd03RyM2VJFSH1G0zp8PsJIIX1sqzpXCaL4aUt6u3MEoaoiDsK_dcCy8CjtQKwhAOBtlwGcrX1B1XJOiDeCyI_QtYaDxARp56_kq8IrvxbVdr-7uWMJIqFZvNgkBWMpUkeWGUZZ4_BQ6k86vkkJA7Sd0FPaeoDd-v"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-white/90 dark:bg-slate-900/90 px-4 py-2 rounded-full text-xs font-bold shadow-lg flex items-center gap-2 border border-blue-500">
+<span class="material-symbols-outlined text-sm text-blue-500">push_pin</span>
+                            Molyko Office
+                        </div>
+</div>
+</div>
+</div>
+</div>
+<!-- FAQ Section -->
+<section class="mt-24 max-w-4xl mx-auto">
+<h2 class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+<div class="space-y-4">
+<!-- FAQ Item 1 -->
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+<button class="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="font-semibold">How do I book a viewing?</span>
+<span class="material-symbols-outlined text-slate-400">expand_more</span>
+</button>
+<div class="px-6 pb-5 text-slate-600 dark:text-slate-400">
+                        You can book a viewing by filling out the contact form above with your preferred date and time, or by calling our Molyko office directly. We conduct viewings Monday to Saturday.
+                    </div>
+</div>
+<!-- FAQ Item 2 -->
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+<button class="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="font-semibold">What is the security deposit policy?</span>
+<span class="material-symbols-outlined text-slate-400">expand_more</span>
+</button>
+<div class="px-6 pb-5 text-slate-600 dark:text-slate-400">
+                        Typically, a security deposit equivalent to one month's rent is required. This is fully refundable at the end of your tenancy, provided the property is returned in its original condition.
+                    </div>
+</div>
+<!-- FAQ Item 3 -->
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+<button class="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="font-semibold">Are utilities included in the rent?</span>
+<span class="material-symbols-outlined text-slate-400">expand_more</span>
+</button>
+<div class="px-6 pb-5 text-slate-600 dark:text-slate-400">
+                        This varies by property. Most student studios in Molyko include water but have separate ENEO meters for electricity. Check the specific listing details or ask us during the viewing.
+                    </div>
+</div>
+<!-- FAQ Item 4 -->
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+<button class="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="font-semibold">Do you offer short-term rentals?</span>
+<span class="material-symbols-outlined text-slate-400">expand_more</span>
+</button>
+<div class="px-6 pb-5 text-slate-600 dark:text-slate-400">
+                        Our standard leases are for 12 months, matching the academic year. However, we do have a few select properties that offer 3-6 month lease options.
+                    </div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-12 mt-24">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="col-span-1 md:col-span-2">
+<div class="flex items-center gap-3 mb-4">
+<div class="text-blue-600">
+<svg class="w-6 h-6" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<span class="text-lg font-bold">Buea Rentals</span>
+</div>
+<p class="text-slate-500 max-w-sm">Providing quality student and residential housing in Molyko and the wider Buea area. Find your perfect home with us.</p>
+</div>
+<div>
+<h4 class="font-bold mb-4">Quick Links</h4>
+<ul class="space-y-2 text-slate-500">
+<li><a class="hover:text-blue-600" href="#">Available Units</a></li>
+<li><a class="hover:text-blue-600" href="#">Landlord Services</a></li>
+<li><a class="hover:text-blue-600" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-4">Follow Us</h4>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-primary/40 flex items-center justify-center text-blue-600 hover:bg-primary transition-colors" href="#">
+<span class="material-symbols-outlined">social_leaderboard</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-primary/40 flex items-center justify-center text-blue-600 hover:bg-primary transition-colors" href="#">
+<span class="material-symbols-outlined">share</span>
+</a>
+</div>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-slate-100 dark:border-slate-800 text-center text-slate-500 text-sm">
+                © 2024 Buea Rentals. All rights reserved. Built for the UB community.
+            </div>
+</div>
+</footer>
+</body></html>

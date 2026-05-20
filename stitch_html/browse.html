@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Browse Houses - Buea Rentals</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e3f2fd",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101a22",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 px-6 lg:px-20 py-4 bg-white dark:bg-slate-900 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-slate-900 dark:text-slate-100">
+<div class="size-8 flex items-center justify-center bg-primary rounded-lg text-slate-900">
+<span class="material-symbols-outlined">home_pin</span>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-tight">Buea Rentals</h2>
+</div>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-sm font-medium transition-colors" href="#">Home</a>
+<a class="text-slate-900 dark:text-white text-sm font-semibold border-b-2 border-primary pb-1" href="#">Rentals</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-sm font-medium transition-colors" href="#">About Us</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-sm font-medium transition-colors" href="#">Contact</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="flex min-w-[100px] cursor-pointer items-center justify-center rounded-xl h-10 px-4 bg-primary text-slate-900 text-sm font-bold transition-all hover:bg-primary/80">
+                        Sign Up
+                    </button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary" data-alt="User profile avatar circular portrait" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAtBmhJP_L-W1yNKySQTmgKNVv8AEJZahZxkoDORpGaGGo-4sIxzepe4rQCFZRRjR3J-44pNWHLq8dfVFRd9nEsYC4iubHRXIZ-ySj7wd8Jhqqz8yl8SvkSST6MWzPl0qcwjCrEb1MqAi3ohfOwORw4b0UMdh4TgEvq8LxWD3yn2aHN6EURjl6bGpNRNr7HGdetnXvqFnhYl5iGrMtUEI_uB0g4n17kvzUs8uku_PpGltArrhvv9EEU9YGWdPi7pC0kzeElpUBjPK_W");'></div>
+</div>
+</header>
+<main class="flex-1 px-6 lg:px-20 py-6 max-w-[1440px] mx-auto w-full">
+<nav class="flex items-center gap-2 mb-6 text-sm">
+<a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200" href="#">Home</a>
+<span class="material-symbols-outlined text-xs text-slate-400">chevron_right</span>
+<a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200" href="#">Buea</a>
+<span class="material-symbols-outlined text-xs text-slate-400">chevron_right</span>
+<span class="text-slate-900 dark:text-slate-100 font-medium">Rentals</span>
+</nav>
+<section class="bg-white dark:bg-slate-900 p-4 lg:p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 mb-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+<div class="lg:col-span-2">
+<label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 px-1">Location</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-slate-400">search</span>
+<input class="w-full h-12 pl-10 pr-4 rounded-xl border-none bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:ring-2 focus:ring-primary/50" placeholder="Search Molyko, Mile 17, Buea Town..." type="text"/>
+</div>
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 px-1">Price Range</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-slate-400">payments</span>
+<select class="w-full h-12 pl-10 pr-10 appearance-none rounded-xl border-none bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-primary/50">
+<option>Any Price</option>
+<option>20k - 50k FCFA</option>
+<option>50k - 100k FCFA</option>
+<option>100k+ FCFA</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 pointer-events-none text-slate-400">expand_more</span>
+</div>
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 px-1">Rooms</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-slate-400">bed</span>
+<select class="w-full h-12 pl-10 pr-10 appearance-none rounded-xl border-none bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-primary/50">
+<option>Any Rooms</option>
+<option>Studio</option>
+<option>1 Bedroom</option>
+<option>2+ Bedrooms</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 pointer-events-none text-slate-400">expand_more</span>
+</div>
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 px-1">Amenities</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-slate-400">filter_list</span>
+<select class="w-full h-12 pl-10 pr-10 appearance-none rounded-xl border-none bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-primary/50">
+<option>All Amenities</option>
+<option>Water Constant</option>
+<option>Fenced Yard</option>
+<option>Prepaid Meter</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 pointer-events-none text-slate-400">expand_more</span>
+</div>
+</div>
+</div>
+</section>
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-xl font-bold text-slate-900 dark:text-slate-100">Properties in Buea <span class="text-slate-400 font-normal text-base ml-2">(124 results)</span></h3>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">grid_view</span>
+</button>
+<button class="p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">map</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<div class="group bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 dark:border-slate-800">
+<div class="relative aspect-[4/3] overflow-hidden">
+<div class="absolute top-3 left-3 z-10">
+<span class="bg-primary/90 backdrop-blur-sm text-slate-900 text-xs font-bold px-3 py-1 rounded-full">New Listing</span>
+</div>
+<button class="absolute top-3 right-3 z-10 bg-white/50 backdrop-blur-sm p-1.5 rounded-full text-slate-900 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+<div class="w-full h-full bg-center bg-cover transition-transform duration-500 group-hover:scale-110" data-alt="Modern studio apartment interior with white walls" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBZlR2ODOquIa1mscDMr6XOzpv1BphT2uWVrx4vb6ufhG708UO9V2oON-kDXy3EgVMsC1YPTEGoaiu0CVnJSpHvt70H_T1aNSXHAhMdk4_F_kPE47nAfaNTyKSSXqKLSdpOUT28AiyGN4I3XLlMLcxLGLyRQlJBdHtI_pLMhFTH2vlkxeTf1-wqYokOAnxLaL_ppzvacJ5TJDwPScjnTChvGTYgxtFCD4WNa4nNYqfzqZXvzoq0-lcDT_QeYLhBQRKZkVzo0T-cnxjE");'></div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-lg text-slate-900 dark:text-slate-100 truncate">Modern Studio in Molyko</h4>
+<div class="text-right">
+<span class="block text-primary-dark font-bold text-slate-900 dark:text-primary">75,000 FCFA</span>
+<span class="text-[10px] text-slate-400 uppercase font-bold">per month</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-slate-500 dark:text-slate-400 text-sm mb-4">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span>Molyko, near UB Junction</span>
+</div>
+<div class="flex items-center gap-4 py-3 border-y border-slate-100 dark:border-slate-800 mb-4">
+<div class="flex items-center gap-1 text-xs text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-lg">bed</span>
+<span>1 Room</span>
+</div>
+<div class="flex items-center gap-1 text-xs text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-lg">water_drop</span>
+<span>Constant Water</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary/80 text-slate-900 font-bold py-2.5 rounded-lg transition-colors flex items-center justify-center gap-2">
+                                View Details
+                                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="group bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 dark:border-slate-800">
+<div class="relative aspect-[4/3] overflow-hidden">
+<button class="absolute top-3 right-3 z-10 bg-white/50 backdrop-blur-sm p-1.5 rounded-full text-slate-900 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+<div class="w-full h-full bg-center bg-cover transition-transform duration-500 group-hover:scale-110" data-alt="Two bedroom apartment living room with balcony" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDbngUDDW6LR-qLENShUZfwHgrumCVqU6BJqQrTw-BUNLnKMEDCu7gemFlT83md6l7KKKtX9HTLWOUkB6jystSzAERNMmv0zh_YArMH69J4pHYSjUxjwW8HsglzWuG6US2_k2cbqCV4dyC2wwtGdmtvRJin34TWMrS_hc6XH3-BnrqMIj18TEZvNhwUxdgVsyQBDsmyPylsWBfHQntJWySRYtN4BAlDEVQFliQR387DRODjSTfGu03_QniVjARIYu78l67pHf3ziYaZ");'></div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-lg text-slate-900 dark:text-slate-100 truncate">2-Bedroom, Bonduma</h4>
+<div class="text-right">
+<span class="block font-bold text-slate-900 dark:text-primary">150,000 FCFA</span>
+<span class="text-[10px] text-slate-400 uppercase font-bold">per month</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-slate-500 dark:text-slate-400 text-sm mb-4">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span>Bonduma Main Road</span>
+</div>
+<div class="flex items-center gap-4 py-3 border-y border-slate-100 dark:border-slate-800 mb-4">
+<div class="flex items-center gap-1 text-xs text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-lg">bed</span>
+<span>2 Rooms</span>
+</div>
+<div class="flex items-center gap-1 text-xs text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-lg">security</span>
+<span>Fenced</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary/80 text-slate-900 font-bold py-2.5 rounded-lg transition-colors flex items-center justify-center gap-2">
+                                View Details
+                                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="group bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 dark:border-slate-800">
+<div class="relative aspect-[4/3] overflow-hidden">
+<div class="absolute top-3 left-3 z-10">
+<span class="bg-orange-500 text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">Best Value</span>
+</div>
+<button class="absolute top-3 right-3 z-10 bg-white/50 backdrop-blur-sm p-1.5 rounded-full text-slate-900 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+<div class="w-full h-full bg-center bg-cover transition-transform duration-500 group-hover:scale-110" data-alt="Student hostel room with desk and single bed" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBSuxEYjjAIziFnj8eaZsbBmLg8mOfO6LIrvakXJJhF8533l6cGheECOBrYzspPMYH0JTbnlDf1-1Kbzw6JMRRNb0EPskMPNsWWdcTdC7scxA62Q_0wdciGHeqmTcoLXU-o6gQIkZ87E3LTJwvT4tUc5jD_tFjerg__JsOyB39KzwgACooKsVcIalnpjyayJDTCAJ0_O28HjNvWs-_DCFlkj9IlqDnE4mhl8Xkkz7jQ9dWXZAIvwIiwQDEiYzZPFQ-Lr9TKN89zlKje");'></div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-lg text-slate-900 dark:text-slate-100 truncate">Student Hostel near UB</h4>
+<div class="text-right">
+<span class="block font-bold text-slate-900 dark:text-primary">45,000 FCFA</span>
+<span class="text-[10px] text-slate-400 uppercase font-bold">per month</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-slate-500 dark:text-slate-400 text-sm mb-4">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span>Dirty South, Molyko</span>
+</div>
+<div class="flex items-center gap-4 py-3 border-y border-slate-100 dark:border-slate-800 mb-4">
+<div class="flex items-center gap-1 text-xs text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-lg">bolt</span>
+<span>Prepaid Meter</span>
+</div>
+<div class="flex items-center gap-1 text-xs text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-lg">group</span>
+<span>Shared Space</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary/80 text-slate-900 font-bold py-2.5 rounded-lg transition-colors flex items-center justify-center gap-2">
+                                View Details
+                                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="group bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 dark:border-slate-800">
+<div class="relative aspect-[4/3] overflow-hidden">
+<button class="absolute top-3 right-3 z-10 bg-white/50 backdrop-blur-sm p-1.5 rounded-full text-slate-900 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+<div class="w-full h-full bg-center bg-cover transition-transform duration-500 group-hover:scale-110" data-alt="Luxury flat exterior with paved parking space" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDWEfUJmdqk3hFI60nos6d0g09uOcug53qcdBVoqHPLZC0eI7ph0oxyHkfeIUW0Dif2p2sHVuxYnpilNkU9c8tZSE7bf7adnLcK4WNG97zjBrjv287253ykUFuHzvr3kOvhmuhv6_fq6LKWI1mo6souSftsMsDL-3qLp78Eqrn1OL_GMYeaJ4pjKigBUyCj0SC5kn1pyv7Ct0Rv4C115hKE2XbE8XYs7MG5g0HVfk1psDOCIfvk-yl454p--M_0BmOhv9tteVWMoFcL");'></div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-lg text-slate-900 dark:text-slate-100 truncate">Luxury Flat, Buea Town</h4>
+<div class="text-right">
+<span class="block font-bold text-slate-900 dark:text-primary">200,000 FCFA</span>
+<span class="text-[10px] text-slate-400 uppercase font-bold">per month</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-slate-500 dark:text-slate-400 text-sm mb-4">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span>G.R.A, Buea Town</span>
+</div>
+<div class="flex items-center gap-4 py-3 border-y border-slate-100 dark:border-slate-800 mb-4">
+<div class="flex items-center gap-1 text-xs text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-lg">local_parking</span>
+<span>Parking</span>
+</div>
+<div class="flex items-center gap-1 text-xs text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-lg">nature_people</span>
+<span>Mountain View</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary/80 text-slate-900 font-bold py-2.5 rounded-lg transition-colors flex items-center justify-center gap-2">
+                                View Details
+                                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="group bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 dark:border-slate-800">
+<div class="relative aspect-[4/3] overflow-hidden">
+<button class="absolute top-3 right-3 z-10 bg-white/50 backdrop-blur-sm p-1.5 rounded-full text-slate-900 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+<div class="w-full h-full bg-center bg-cover transition-transform duration-500 group-hover:scale-110" data-alt="Spacious villa with a green garden" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCH7o0bfhL5OqTz87oimwGCdnoBIyQD-2uPOExG06e2D4QVXMddTLKtuD-ehOe7sdAnjubpSz37V-nsl1H7DrgUMQGoQBWSe0Ah8J3KyXvAK-dMylf_ub_bQynnA2kzHg3t4hAUDkTkCLM7uObXOcuM2REqkwniow4tdDnA5MH1N8trzxzGeU_k1u1pHHyqc6rDQaABFZZw2ZwTyIKCfUsDfCE63hc6-9FOXrAnMQW9-4niOWIwHfGn1NfwsdnoDaNXA_UQPSXmuHXr");'></div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-lg text-slate-900 dark:text-slate-100 truncate">Spacious Villa, Bokwango</h4>
+<div class="text-right">
+<span class="block font-bold text-slate-900 dark:text-primary">350,000 FCFA</span>
+<span class="text-[10px] text-slate-400 uppercase font-bold">per month</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-slate-500 dark:text-slate-400 text-sm mb-4">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span>Bokwango Heights</span>
+</div>
+<div class="flex items-center gap-4 py-3 border-y border-slate-100 dark:border-slate-800 mb-4">
+<div class="flex items-center gap-1 text-xs text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-lg">house</span>
+<span>4 Rooms</span>
+</div>
+<div class="flex items-center gap-1 text-xs text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-lg">yard</span>
+<span>Large Garden</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary/80 text-slate-900 font-bold py-2.5 rounded-lg transition-colors flex items-center justify-center gap-2">
+                                View Details
+                                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="group bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 dark:border-slate-800">
+<div class="relative aspect-[4/3] overflow-hidden">
+<button class="absolute top-3 right-3 z-10 bg-white/50 backdrop-blur-sm p-1.5 rounded-full text-slate-900 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+<div class="w-full h-full bg-center bg-cover transition-transform duration-500 group-hover:scale-110" data-alt="Small cozy studio near the main road" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDLdadHkHebUGxY0Ivy3xXr47UssO4WkpE6x59XWGYOOhP7K7V1JLpPHm3zpHkXGdevxmxnn-buB_PN3Hg5GovbcjXGVqHZHYqj3XOVpKw9pKxHaDtxa8A5sWhv3JB8IeVszeq-AcH9LhBNWkgJ-YNQJzK6iZpwxymjRCuhk5yCUEkJQAD5nSLhd2WBv2IMXCv3mVXpq3YY6YO1DT8PY63Q_FTUqNScGukCVKyo4K5oSzga8MOVVi0OZCwE7qbFY1vRyuINrXUYpAy_");'></div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-lg text-slate-900 dark:text-slate-100 truncate">Cozy Studio, Mile 17</h4>
+<div class="text-right">
+<span class="block font-bold text-slate-900 dark:text-primary">60,000 FCFA</span>
+<span class="text-[10px] text-slate-400 uppercase font-bold">per month</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-slate-500 dark:text-slate-400 text-sm mb-4">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span>Near Mile 17 Motor Park</span>
+</div>
+<div class="flex items-center gap-4 py-3 border-y border-slate-100 dark:border-slate-800 mb-4">
+<div class="flex items-center gap-1 text-xs text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-lg">directions_car</span>
+<span>Near Road</span>
+</div>
+<div class="flex items-center gap-1 text-xs text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-lg">meeting_room</span>
+<span>Self-contained</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary/80 text-slate-900 font-bold py-2.5 rounded-lg transition-colors flex items-center justify-center gap-2">
+                                View Details
+                                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-12 flex justify-center">
+<div class="flex gap-2">
+<button class="size-10 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="size-10 flex items-center justify-center rounded-lg bg-primary text-slate-900 font-bold">1</button>
+<button class="size-10 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-slate-100">2</button>
+<button class="size-10 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-slate-100">3</button>
+<span class="size-10 flex items-center justify-center text-slate-400">...</span>
+<button class="size-10 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-slate-100">12</button>
+<button class="size-10 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</main>
+<footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-6 lg:px-20 py-12 mt-12">
+<div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="md:col-span-1">
+<div class="flex items-center gap-3 text-slate-900 dark:text-slate-100 mb-4">
+<div class="size-8 flex items-center justify-center bg-primary rounded-lg text-slate-900">
+<span class="material-symbols-outlined">home_pin</span>
+</div>
+<h2 class="text-xl font-bold leading-tight">Buea Rentals</h2>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                            The most trusted platform for finding student hostels and luxury apartments in the mountain city of Buea.
+                        </p>
+</div>
+<div>
+<h4 class="font-bold mb-4 text-slate-900 dark:text-slate-100">Neighborhoods</h4>
+<ul class="space-y-2 text-sm text-slate-500 dark:text-slate-400">
+<li><a class="hover:text-primary" href="#">Molyko</a></li>
+<li><a class="hover:text-primary" href="#">Bonduma</a></li>
+<li><a class="hover:text-primary" href="#">Buea Town</a></li>
+<li><a class="hover:text-primary" href="#">Bokwango</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-4 text-slate-900 dark:text-slate-100">Quick Links</h4>
+<ul class="space-y-2 text-sm text-slate-500 dark:text-slate-400">
+<li><a class="hover:text-primary" href="#">Browse All</a></li>
+<li><a class="hover:text-primary" href="#">List your property</a></li>
+<li><a class="hover:text-primary" href="#">Safety Tips</a></li>
+<li><a class="hover:text-primary" href="#">Help Center</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-4 text-slate-900 dark:text-slate-100">Newsletter</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Get the latest rental listings directly in your inbox.</p>
+<div class="flex gap-2">
+<input class="flex-1 h-10 px-3 rounded-lg bg-slate-100 dark:bg-slate-800 border-none text-sm" placeholder="Email" type="email"/>
+<button class="bg-primary text-slate-900 px-4 rounded-lg font-bold text-sm">Join</button>
+</div>
+</div>
+</div>
+<div class="max-w-[1440px] mx-auto pt-12 mt-12 border-t border-slate-100 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+<p>© 2024 Buea Rentals. Built for the mountain city.</p>
+<div class="flex gap-6">
+<a class="hover:text-slate-900 dark:hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-slate-900 dark:hover:text-white transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-slate-900 dark:hover:text-white transition-colors" href="#">Cookie Policy</a>
+</div>
+</div>
+</footer>
+</div>
+<button class="fixed bottom-8 right-8 z-40 bg-slate-900 dark:bg-primary dark:text-slate-900 text-white flex items-center gap-2 px-6 py-3 rounded-full shadow-2xl hover:scale-105 transition-transform">
+<span class="material-symbols-outlined">map</span>
+<span class="font-bold">View Map</span>
+</button>
+</div>
+</body></html>

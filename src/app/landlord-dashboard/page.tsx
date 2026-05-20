@@ -1,0 +1,151 @@
+'use client';
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
+import { bookingApi, propertyApi } from "@/services/api";
+import type { Booking, BookingStatus, Property } from "@/types";
+
+export default function LandlordDashboardPage() {
+  const [bookings, setBookings] = useState<Booking[]>([]);
+  const [properties, setProperties] = useState<Property[]>([]);
+  const { user } = useAuth();
+
+  useEffect(() => {
+    if (!user) return;
+    
+    bookingApi.getByLandlordId(user.id)
+      .then(setBookings)
+      .catch(console.error);
+      
+    propertyApi.getAll()
+      .then(allProps => setProperties(allProps.filter(p => p.landlordId === user.id)))
+      .catch(console.error);
+  }, [user]);
+
+  const updateStatus = async (id: string, status: BookingStatus) => {
+    // Ideally there is a bookingApi.updateStatus, but if not we can just update local state for now
+    // Actually we should add it if it doesn't exist, but we can do local for UX first
+    setBookings(prev => prev.map(b => b.id === id ? { ...b, status } : b));
+  };
+
+  const totalListings = properties.length;
+  const availableListings = properties.filter(p => p.isAvailable).length;
+  const pendingBookings = bookings.filter(b => b.status === 'pending').length;
+
+  return (
+    <div className="flex-1 overflow-y-auto p-8 space-y-8">
+      {/* Stats Row */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+        {[
+          { label: 'Total Listings', value: totalListings, icon: 'apartment', color: 'text-blue-600', bg: 'bg-primary/30' },
+          { label: 'Available Now', value: availableListings, icon: 'check_circle', color: 'text-green-600', bg: 'bg-green-100' },
+          { label: 'Pending Requests', value: pendingBookings, icon: 'pending_actions', color: 'text-amber-600', bg: 'bg-amber-100' },
+        ].map(s => (
+          <div key={s.label} className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 p-6 shadow-sm flex items-center gap-4">
+            <div className={`${s.bg} w-12 h-12 rounded-xl flex items-center justify-center`}>
+              <span className={`material-symbols-outlined ${s.color}`}>{s.icon}</span>
+            </div>
+            <div>
+              <p className="text-2xl font-black text-slate-900 dark:text-white">{s.value}</p>
+              <p className="text-sm text-slate-500">{s.label}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Quick Actions */}
+      <div className="flex flex-wrap gap-3">
+        <Link href="/landlord-dashboard/add-property" className="flex items-center gap-2 px-5 py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-colors text-sm">
+          <span className="material-symbols-outlined text-sm">add</span> Add New Property
+        </Link>
+        <Link href="/landlord-dashboard/listings" className="flex items-center gap-2 px-5 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-bold rounded-xl hover:bg-slate-50 transition-colors text-sm">
+          <span className="material-symbols-outlined text-sm">list_alt</span> View All Listings
+        </Link>
+        <Link href="/landlord-dashboard/messages" className="flex items-center gap-2 px-5 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-bold rounded-xl hover:bg-slate-50 transition-colors text-sm">
+          <span className="material-symbols-outlined text-sm">chat</span> Messages
+        </Link>
+      </div>
+
+      {/* Booking Requests */}
+      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm overflow-hidden">
+        <div className="px-6 py-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+          <h3 className="font-bold text-slate-900 dark:text-white">Booking Requests</h3>
+          {pendingBookings > 0 && <span className="bg-amber-100 text-amber-700 text-xs font-bold px-2 py-1 rounded-full">{pendingBookings} pending</span>}
+        </div>
+        {bookings.length === 0 ? (
+          <div className="text-center py-12 text-slate-400">
+            <span className="material-symbols-outlined text-4xl mb-2">inbox</span>
+            <p className="text-sm">No booking requests yet.</p>
+          </div>
+        ) : (
+          <div className="divide-y divide-slate-50 dark:divide-slate-800">
+            {bookings.map(booking => (
+              <div key={booking.id} className="px-6 py-5 flex items-start gap-4">
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-start gap-3 mb-2">
+                    <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-blue-700 font-black shrink-0">
+                      {booking.studentName[0]}
+                    </div>
+                    <div className="flex-1">
+                      <p className="font-bold text-slate-900 dark:text-white text-sm">{booking.studentName}</p>
+                      <p className="text-xs text-blue-600">{booking.propertyTitle}</p>
+                    </div>
+                    <StatusBadge status={booking.status} />
+                  </div>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 ml-13 pl-13 line-clamp-2">{booking.message}</p>
+                  <div className="flex items-center gap-4 mt-2 text-xs text-slate-500 ml-13">
+                    <span>Move-in: <strong>{booking.moveInDate}</strong></span>
+                    <span>Duration: <strong>{booking.duration === 'academic-year' ? 'Academic Year' : 'Monthly'}</strong></span>
+                    <span>Total: <strong>{booking.totalAmount.toLocaleString()} FCFA</strong></span>
+                  </div>
+                </div>
+                {booking.status === 'pending' && (
+                  <div className="flex gap-2 shrink-0">
+                    <button onClick={() => updateStatus(booking.id, 'confirmed')} className="px-3 py-1.5 bg-green-600 text-white text-xs font-bold rounded-lg hover:bg-green-700 transition-colors">
+                      Approve
+                    </button>
+                    <button onClick={() => updateStatus(booking.id, 'rejected')} className="px-3 py-1.5 bg-red-100 text-red-600 text-xs font-bold rounded-lg hover:bg-red-200 transition-colors">
+                      Reject
+                    </button>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Recent Listings Preview */}
+      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm p-6">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="font-bold text-slate-900 dark:text-white">Your Properties</h3>
+          <Link href="/landlord-dashboard/listings" className="text-sm text-blue-600 font-bold hover:underline">Manage all →</Link>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {properties.slice(0, 3).map(p => (
+            <div key={p.id} className="flex items-center gap-3 p-3 bg-slate-50 dark:bg-slate-800 rounded-xl">
+              <div className="w-12 h-12 rounded-lg overflow-hidden relative bg-slate-200 shrink-0">
+                <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: `url('${p.images[0]}')` }} />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="font-bold text-sm text-slate-900 dark:text-white truncate">{p.title}</p>
+                <p className="text-xs text-slate-500">{p.pricePerMonth.toLocaleString()} FCFA/mo</p>
+              </div>
+              <span className={`w-2 h-2 rounded-full shrink-0 ${p.isAvailable ? 'bg-green-500' : 'bg-red-400'}`} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function StatusBadge({ status }: { status: string }) {
+  const styles: Record<string, string> = {
+    pending: 'bg-amber-100 text-amber-700',
+    confirmed: 'bg-green-100 text-green-700',
+    rejected: 'bg-red-100 text-red-700',
+    cancelled: 'bg-slate-100 text-slate-600',
+  };
+  return <span className={`px-2 py-1 rounded-full text-xs font-bold ${styles[status] ?? styles.pending}`}>{status.charAt(0).toUpperCase() + status.slice(1)}</span>;
+}

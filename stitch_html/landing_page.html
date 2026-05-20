@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Buea Student Housing | Find Your Perfect Room</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e3f2fd",
+                        "primary-dark": "#bbdefb",
+                        "accent": "#0d47a1",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101a22",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-size: 24px; vertical-align: middle; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-16">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-accent text-3xl">home_work</span>
+<span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">BueaStay</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium hover:text-accent transition-colors" href="#">Home</a>
+<a class="text-sm font-medium hover:text-accent transition-colors" href="#">Browse Houses</a>
+<a class="text-sm font-medium hover:text-accent transition-colors" href="#">About</a>
+<a class="text-sm font-medium hover:text-accent transition-colors" href="#">Contact</a>
+</nav>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2 text-sm font-semibold rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">Login</button>
+<button class="px-4 py-2 text-sm font-semibold bg-primary text-accent rounded-lg hover:bg-primary-dark transition-all">Register</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="relative pt-16 pb-24 overflow-hidden">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid lg:grid-cols-2 gap-12 items-center">
+<div class="space-y-8">
+<div class="inline-flex items-center px-3 py-1 rounded-full bg-primary/50 text-accent text-xs font-bold uppercase tracking-wider">
+                        #1 Student Housing Platform
+                    </div>
+<h1 class="text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white leading-[1.1] tracking-tight">
+                        Find Affordable Student Housing in <span class="text-accent">Buea</span>
+</h1>
+<p class="text-lg text-slate-600 dark:text-slate-400 max-w-lg">
+                        Connecting students and landlords for the best off-campus living experience. Secure, verified, and close to UB.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button class="px-8 py-4 bg-accent text-white font-bold rounded-xl shadow-lg shadow-accent/20 hover:scale-105 transition-transform">
+                            Start Searching
+                        </button>
+<button class="px-8 py-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-bold rounded-xl hover:bg-slate-50 transition-colors">
+                            List Your Property
+                        </button>
+</div>
+</div>
+<div class="relative group">
+<div class="absolute -inset-4 bg-primary/30 rounded-3xl blur-2xl group-hover:bg-primary/40 transition-all"></div>
+<div class="relative aspect-video rounded-2xl overflow-hidden shadow-2xl bg-slate-200" data-alt="Modern student hostel building with blue sky" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAUgrCnYy0fuO1Ku-h-hNPJnKfYaNnzMeh0k_3UQExGih8_SqXsfroQs1wa7tizCTgkKtMOTUxzr6XPdIx1vXR1Ra-MnzfBSfLm-GIl_6j-pAgH3ALKwSikt8lBHn4Ci5cq6DTBaKSKRyirVdKh9Pw_PAF6a8UjsojC9szI0YkjT1JPDRiQdflvAEGyIMiBSKc3-A1_13wv-c1mnyZgCbKTvOpB3UV8YnCRYutQuWKxK6He9GCgPdYcI3hfD9XEXiyXtak4gJWuFQEd'); background-size: cover; background-position: center;">
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Search Section -->
+<section class="max-w-7xl mx-auto px-4 -mt-12 relative z-10">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+<div class="space-y-1">
+<label class="text-xs font-bold text-slate-400 uppercase ml-1">Location</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-3 text-slate-400">location_on</span>
+<select class="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border-none rounded-xl text-sm focus:ring-2 focus:ring-accent transition-all">
+<option>Molyko</option>
+<option>Mile 17</option>
+<option>Bonduma</option>
+<option>Great Soppo</option>
+<option>Dirty South</option>
+</select>
+</div>
+</div>
+<div class="space-y-1">
+<label class="text-xs font-bold text-slate-400 uppercase ml-1">Price Range</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-3 text-slate-400">payments</span>
+<select class="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border-none rounded-xl text-sm focus:ring-2 focus:ring-accent transition-all">
+<option>Below 30,000 FCFA</option>
+<option>30k - 50k FCFA</option>
+<option>50k - 80k FCFA</option>
+<option>Above 80,000 FCFA</option>
+</select>
+</div>
+</div>
+<div class="space-y-1">
+<label class="text-xs font-bold text-slate-400 uppercase ml-1">Rooms</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-3 text-slate-400">bed</span>
+<select class="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border-none rounded-xl text-sm focus:ring-2 focus:ring-accent transition-all">
+<option>Single Room</option>
+<option>Studio</option>
+<option>Modern Studio</option>
+<option>2 Bedroom Flat</option>
+</select>
+</div>
+</div>
+<div class="space-y-1">
+<label class="text-xs font-bold text-slate-400 uppercase ml-1">Amenities</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-3 text-slate-400">star</span>
+<select class="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border-none rounded-xl text-sm focus:ring-2 focus:ring-accent transition-all">
+<option>Internal Toilet</option>
+<option>Security Guard</option>
+<option>Constant Water</option>
+<option>WiFi Available</option>
+</select>
+</div>
+</div>
+<div class="flex items-end">
+<button class="w-full py-3 bg-accent text-white font-bold rounded-xl hover:bg-blue-800 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">search</span>
+                        Search
+                    </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Properties -->
+<section class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="text-3xl font-bold text-slate-900 dark:text-white">Featured Properties</h2>
+<p class="text-slate-500 mt-2">Top rated housing near the University of Buea.</p>
+</div>
+<a class="text-accent font-semibold flex items-center gap-1 hover:underline" href="#">
+                View all <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Property 1 -->
+<div class="group bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 dark:border-slate-800">
+<div class="relative aspect-[4/3] overflow-hidden">
+<div class="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur rounded-lg px-3 py-1 text-xs font-bold text-accent">Molyko</div>
+<div class="absolute top-4 right-4 z-10 bg-green-500 text-white rounded-lg px-3 py-1 text-xs font-bold">Verified</div>
+<div class="w-full h-full bg-slate-200 transition-transform duration-500 group-hover:scale-110" data-alt="Interior of a modern student studio room" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCzZlSHUlmZmCoErMtUEYHZhCyT1uMZW2bOYtU2KBSihYJqnQ27MeNdaJkKaFPXwp1MkiPkehCt_8289-egIokjQJbpZYEmdC4YW6o4nOP530JaGPulDhH975pj0Gj1R_d7LtKCCfFyQraG83yaVia2MY_4EpVXuZQ379epYUelHWDUV0sgpJngmVq3A3uitpyB8QoB9kZRuVZYB6ZI_4hinzgZ_6Ake27uJvrrzcqW--4f37zpl5BIH8t601FBmpwoJNW7IgjxlOr3'); background-size: cover; background-position: center;"></div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-xl font-bold group-hover:text-accent transition-colors">Sunshine Residence</h3>
+<div class="flex items-center gap-1 text-amber-500">
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="text-sm font-bold">4.8</span>
+</div>
+</div>
+<div class="flex items-center gap-4 text-slate-500 text-sm mb-6">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">bed</span> 1 Room</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">shower</span> Internal</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">shield</span> Secure</span>
+</div>
+<div class="flex items-center justify-between border-t border-slate-50 dark:border-slate-800 pt-4">
+<div class="text-xl font-extrabold text-slate-900 dark:text-white">
+                            45,000 <span class="text-sm font-medium text-slate-500">FCFA/mo</span>
+</div>
+<button class="text-accent font-bold text-sm hover:underline">Details</button>
+</div>
+</div>
+</div>
+<!-- Property 2 -->
+<div class="group bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 dark:border-slate-800">
+<div class="relative aspect-[4/3] overflow-hidden">
+<div class="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur rounded-lg px-3 py-1 text-xs font-bold text-accent">Bonduma</div>
+<div class="w-full h-full bg-slate-200 transition-transform duration-500 group-hover:scale-110" data-alt="Modern blue and white apartment exterior" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB13pZm_7k22xoononqmdBLtb3JVP1uJoegO_vmAN4VfCvo2Hj4RawJJ1mA2iSEJl2W7kg6kO-j9YDKezYVxmlsvwI262SZj0XhXH-8NPguu7e_vrLNvUuLyMJF-cmNfHacFEm7DIkqrGFtzsDcTKfe8Aq7BGQF3NSHHADRL35pqSkHpKy60Op0j8PwaP5XaB2Ns1QyneLZp7Uz2KU_vLcVdxnLaYMbwWqI5NyQt3mJFnXY3iq466Q4yWYvgWUUbCIGGbJ-L568-BLv'); background-size: cover; background-position: center;"></div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-xl font-bold group-hover:text-accent transition-colors">Blue Heights Studio</h3>
+<div class="flex items-center gap-1 text-amber-500">
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="text-sm font-bold">4.6</span>
+</div>
+</div>
+<div class="flex items-center gap-4 text-slate-500 text-sm mb-6">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">chair</span> Furnished</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">wifi</span> WiFi</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">bolt</span> Included</span>
+</div>
+<div class="flex items-center justify-between border-t border-slate-50 dark:border-slate-800 pt-4">
+<div class="text-xl font-extrabold text-slate-900 dark:text-white">
+                            65,000 <span class="text-sm font-medium text-slate-500">FCFA/mo</span>
+</div>
+<button class="text-accent font-bold text-sm hover:underline">Details</button>
+</div>
+</div>
+</div>
+<!-- Property 3 -->
+<div class="group bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 dark:border-slate-800">
+<div class="relative aspect-[4/3] overflow-hidden">
+<div class="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur rounded-lg px-3 py-1 text-xs font-bold text-accent">Mile 17</div>
+<div class="absolute top-4 right-4 z-10 bg-blue-500 text-white rounded-lg px-3 py-1 text-xs font-bold">New</div>
+<div class="w-full h-full bg-slate-200 transition-transform duration-500 group-hover:scale-110" data-alt="Cozy single room with a large window" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC6C28D3zNSct6Zak9h5LLbEBlryvF69OzbQkolZd1Y2JBq2a6qZwkl9x3AybxBLdQs0Xo6bO0_ugqKfsZmfGMonGenJBzGgb-GH7-3WjKroNMCslTC3P-rpXe2vzce4SYyWBwKDQfsThiLha8qJzgLJ9eYi4Kcy-rqGPhtEZgmC8roDa9e2rxaFgvt6FRmJQi_0qlhUc5ngNH9TgZtLlibAl5ofQBhoou9XnxcqYQqdw7TKKVtBqRrX9e0SOBTDH8cJfj2h7Xt4qiQ'); background-size: cover; background-position: center;"></div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-xl font-bold group-hover:text-accent transition-colors">Unity Hostel</h3>
+<div class="flex items-center gap-1 text-amber-500">
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="text-sm font-bold">4.5</span>
+</div>
+</div>
+<div class="flex items-center gap-4 text-slate-500 text-sm mb-6">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">group</span> Shared</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">water_drop</span> Water</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">directions_walk</span> Near Road</span>
+</div>
+<div class="flex items-center justify-between border-t border-slate-50 dark:border-slate-800 pt-4">
+<div class="text-xl font-extrabold text-slate-900 dark:text-white">
+                            25,000 <span class="text-sm font-medium text-slate-500">FCFA/mo</span>
+</div>
+<button class="text-accent font-bold text-sm hover:underline">Details</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- How It Works Section -->
+<section class="py-24 bg-slate-50 dark:bg-slate-900/50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<h2 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-4">How It Works</h2>
+<p class="text-slate-500 max-w-2xl mx-auto mb-16">Three simple steps to finding your next home in the town of legendary hospitality.</p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+<!-- Step 1 -->
+<div class="relative z-10">
+<div class="w-16 h-16 bg-primary text-accent rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg rotate-3 group-hover:rotate-0 transition-transform">
+<span class="material-symbols-outlined text-3xl">search_insights</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Search</h3>
+<p class="text-slate-500 text-sm leading-relaxed">Filter by neighborhood, budget, and amenities to find the rooms that fit your needs.</p>
+</div>
+<!-- Step 2 -->
+<div class="relative z-10">
+<div class="w-16 h-16 bg-primary text-accent rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg -rotate-3 transition-transform">
+<span class="material-symbols-outlined text-3xl">chat_bubble</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Contact</h3>
+<p class="text-slate-500 text-sm leading-relaxed">Chat directly with verified landlords and schedule a physical visit to the property.</p>
+</div>
+<!-- Step 3 -->
+<div class="relative z-10">
+<div class="w-16 h-16 bg-primary text-accent rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg rotate-6 transition-transform">
+<span class="material-symbols-outlined text-3xl">key</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Move In</h3>
+<p class="text-slate-500 text-sm leading-relaxed">Secure your room with a deposit and move in. Focus on your studies while we handle the rest.</p>
+</div>
+<!-- Connector Line (Desktop Only) -->
+<div class="hidden md:block absolute top-8 left-1/2 -translate-x-1/2 w-2/3 h-px border-t border-dashed border-slate-300"></div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-white dark:bg-background-dark border-t border-slate-100 dark:border-slate-800 pt-16 pb-8">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+<div class="col-span-1 md:col-span-1 space-y-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-accent text-3xl">home_work</span>
+<span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">BueaStay</span>
+</div>
+<p class="text-sm text-slate-500 leading-relaxed">
+                        The most trusted student housing platform in Buea. We make off-campus living easy and affordable.
+                    </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<svg class="w-5 h-5 fill-accent" viewbox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg>
+</a>
+<a class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<svg class="w-5 h-5 fill-accent" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-sm font-bold uppercase tracking-wider mb-6">Explore</h4>
+<ul class="space-y-4 text-sm text-slate-500">
+<li><a class="hover:text-accent" href="#">Browse Neighborhoods</a></li>
+<li><a class="hover:text-accent" href="#">Hostels in Molyko</a></li>
+<li><a class="hover:text-accent" href="#">Pricing Guide</a></li>
+<li><a class="hover:text-accent" href="#">Safety Tips</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-sm font-bold uppercase tracking-wider mb-6">About</h4>
+<ul class="space-y-4 text-sm text-slate-500">
+<li><a class="hover:text-accent" href="#">Our Mission</a></li>
+<li><a class="hover:text-accent" href="#">List a Property</a></li>
+<li><a class="hover:text-accent" href="#">Landlord FAQ</a></li>
+<li><a class="hover:text-accent" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-sm font-bold uppercase tracking-wider mb-6">Contact Us</h4>
+<ul class="space-y-4 text-sm text-slate-500">
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-sm">mail</span>
+                            hello@bueastay.com
+                        </li>
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-sm">phone</span>
+                            +237 6XX XXX XXX
+                        </li>
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                            Silicon Mountain, Buea
+                        </li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-slate-100 dark:border-slate-800 text-center">
+<p class="text-xs text-slate-400">
+                    © 2024 BueaStay Student Housing System. All rights reserved.
+                </p>
+</div>
+</div>
+</footer>
+</body></html>

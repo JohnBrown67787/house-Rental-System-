@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Messages - Student Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e3f2fd",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101a22",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col shrink-0">
+<div class="p-6 flex items-center gap-3">
+<div class="size-10 rounded-full bg-primary flex items-center justify-center text-blue-600">
+<span class="material-symbols-outlined">school</span>
+</div>
+<div>
+<h1 class="text-sm font-bold">Student Hub</h1>
+<p class="text-xs text-slate-500">Premium Housing</p>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-2 mt-4">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="text-sm font-medium">My Bookings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary dark:bg-primary/20 text-blue-700 dark:text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="text-sm font-medium">Messages</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="text-sm font-medium">Documents</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">credit_card</span>
+<span class="text-sm font-medium">Payments</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3 p-2">
+<img class="size-8 rounded-full object-cover" data-alt="User profile photo of a young man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8xGM3XICPTLlCZ1iINyAkBonbdf658k_RU7umip_ET1NoS96WZR8QMmQdkrjM4plfHjWf4OppN1_tVnpl2XftkYHcRluTpQ6cZ4YCrmRvhgoW1-GQFh92JqRJ-DCUpARYK2GP7ZLUfiIjNUEF9HhfSrw_LjHNv49CvZP7yJ38b6XdlrG534A9cFPXPfoXSUnNgxYseXU-MsoGhsNTAC-SLyDZ8Qzs3UxCaM09jqVtJXPwdl3BgZTOrAKXkapXnC5fw0z83hdHZsnV"/>
+<div class="overflow-hidden">
+<p class="text-xs font-semibold truncate">Alex Johnson</p>
+<p class="text-[10px] text-slate-500 truncate">ID: #48291</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex overflow-hidden">
+<!-- Conversation List (Center-Left Pane) -->
+<div class="w-80 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col shrink-0">
+<div class="p-4">
+<h2 class="text-xl font-bold mb-4">Messages</h2>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-xl pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary" placeholder="Search conversations..." type="text"/>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar">
+<!-- Active Conversation -->
+<div class="px-4 py-3 bg-primary/30 dark:bg-primary/10 border-r-4 border-blue-500 flex gap-3 cursor-pointer">
+<div class="relative shrink-0">
+<img class="size-12 rounded-full object-cover" data-alt="Landlord profile photo Sarah Jenkins" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChwpgjBGnXb3v9QgUiELLG0bAjvpNaR3ckGLQXnerSqx-H8cQz8xZq804wD6xBEcv9pxAmlCcPSTDiWH7lrnNG7M4rpoo5xPLeZH2ODYWxJ4wmOJBlJ3Gf12n7GYrfDueiCgb_j9R24-wpB61OI7mbZuiMumzzd7xQIjodZGPKH_S-3dno90gRU2c4Bldee3--YNIntBd9F0xyx59vgGdgdzg1UVZbkqeA0S9yj1TXSaI-5E7bRelXe7DScUlgdTzHGrSamxWJRw8g"/>
+<span class="absolute bottom-0 right-0 size-3 bg-green-500 border-2 border-white dark:border-slate-900 rounded-full"></span>
+</div>
+<div class="flex-1 overflow-hidden">
+<div class="flex justify-between items-baseline">
+<h3 class="text-sm font-semibold truncate">Mrs. Sarah Jenkins</h3>
+<span class="text-[10px] text-slate-500 uppercase">10:24 AM</span>
+</div>
+<p class="text-xs text-slate-500 truncate">Great, I'll send the lease agreement over this afternoon...</p>
+</div>
+</div>
+<!-- Other Conversations -->
+<div class="px-4 py-3 hover:bg-slate-50 dark:hover:bg-slate-800 flex gap-3 cursor-pointer transition-colors border-r-4 border-transparent">
+<div class="relative shrink-0">
+<img class="size-12 rounded-full object-cover" data-alt="Landlord profile photo Robert Chen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYO_yFk3s-grhC2hZoezf9qqYVR0Hcwouhnl76JUK0kRGLnCyBbxYQMZPKWwPAOhfWzfdiBHFHEw9MrR9y1UzD2TBnltrBCILBHbcIPCYMwwuP2tN27Njs4xeSM7ebajN9vubmq0kxM65KcvkxHVUq0KGRebxocWF8x1BzepGVCgPHj3clOxbZJ3aHbk74CB6rJM_--ggU5uyl1WVLuRjiU54l6PkjUHgNBpuJ_x40oT-UeFLBZSIz5mjvIc6sppVLbjXl4ue6sle4"/>
+</div>
+<div class="flex-1 overflow-hidden">
+<div class="flex justify-between items-baseline">
+<h3 class="text-sm font-semibold truncate">Mr. Robert Chen</h3>
+<span class="text-[10px] text-slate-500 uppercase">Yesterday</span>
+</div>
+<p class="text-xs text-slate-500 truncate font-medium dark:text-slate-300">Is the security deposit still available?</p>
+</div>
+</div>
+<div class="px-4 py-3 hover:bg-slate-50 dark:hover:bg-slate-800 flex gap-3 cursor-pointer transition-colors border-r-4 border-transparent">
+<div class="relative shrink-0">
+<img class="size-12 rounded-full object-cover" data-alt="Landlord profile photo Elena Rodriguez" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy7fwy8KJoLqpVvEDypmibR16UU9dwfa4JErBGF3IZMI4V9pZjFdfKsIvUG0U3sJ4nh77FgKj9M8Ec3xlAe_4eMae2aKvM-bA1ZBR3uwPE1iwWYfKssNdPDM46Lj8NZQKeX4h9CVvl-Siy5ZOBXUZnzhbSR1chGYNqjFwZg0X2SMpGqefN9bhtGB4STY74YGsQnWGZIfGBro9n3KdAYcmMNCpzWUBkDy2i8Ecy80GMJVej2SjSVM_9yec63WIfxnSFok3c0NSUVm_a"/>
+</div>
+<div class="flex-1 overflow-hidden">
+<div class="flex justify-between items-baseline">
+<h3 class="text-sm font-semibold truncate">Elena Rodriguez</h3>
+<span class="text-[10px] text-slate-500 uppercase">Oct 12</span>
+</div>
+<p class="text-xs text-slate-500 truncate">The viewing is scheduled for 4 PM on Tuesday.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Chat Window (Main Right Pane) -->
+<div class="flex-1 flex flex-col bg-background-light dark:bg-background-dark">
+<!-- Chat Header -->
+<header class="h-16 px-6 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md flex items-center justify-between shrink-0">
+<div class="flex items-center gap-3">
+<div class="flex flex-col">
+<h2 class="text-sm font-bold">Mrs. Sarah Jenkins</h2>
+<div class="flex items-center gap-1.5">
+<span class="size-2 bg-green-500 rounded-full"></span>
+<span class="text-[10px] text-slate-500 font-medium">Online</span>
+</div>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="px-3 py-1.5 text-xs font-semibold bg-primary dark:bg-primary/20 text-blue-700 dark:text-primary rounded-lg hover:opacity-80 transition-opacity flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">home</span>
+                            View Property
+                        </button>
+<button class="px-3 py-1.5 text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                            View Profile
+                        </button>
+</div>
+</header>
+<!-- Messages Area -->
+<div class="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar">
+<div class="flex justify-center">
+<span class="px-3 py-1 bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-[10px] font-bold rounded-full uppercase tracking-wider">Today</span>
+</div>
+<!-- Landlord Message -->
+<div class="flex items-end gap-3 max-w-[80%]">
+<img class="size-8 rounded-full object-cover" data-alt="Sarah Jenkins profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdsDMiJlPkRRVb4viKe02AtMTQMroNBO7Rl1-9jelUylqoOVFbq5URqiO4uiSA5IDb-QRIcEsRLafhQ936xn8xbNdJMtsBtFd4xRUJEBMc_mRxw3_LmVhg9IE2dtF5aL82yTDO8AR-n3tIBeCHEW9WH1iSDr9zE61Vv8u3hrThkLxt9EGyFeJaGurxa8dg2B8pjCei8juMn40q5SngBqWXhdRq7_RQKEYOdaVisrb0M92CWKZ-ByhTR7aIpZ6XrS8NUEvpfauK-1T6"/>
+<div class="bg-white dark:bg-slate-800 p-4 rounded-xl rounded-bl-none shadow-sm">
+<p class="text-sm leading-relaxed">Hello Alex! I've reviewed your application for the Oakwood Heights apartment. Everything looks perfect.</p>
+<p class="text-[10px] text-slate-400 mt-2">10:15 AM</p>
+</div>
+</div>
+<!-- Student Message -->
+<div class="flex items-end gap-3 max-w-[80%] ml-auto flex-row-reverse">
+<img class="size-8 rounded-full object-cover" data-alt="Alex Johnson profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDASPtxUSj_irQh2lG7IG_F9Bykym94lNp8F38APubImnSrikRUoUg2Ws0hQafqHeEH1-CHGzG9xnehTLk6cBulRTxRwn3AnqUrYtl7u1puAFqs2zm3PMQEHkT2zFsCEzZHqS70ojPwc1FukM2o24pfYHtkkxnB01SopYiFPgM9mVrSBjnYNH8UqLKHBm1KjpfGKa_hRK05IXe-3nS1wTVSnWatv-XTNUKbT_rjxZLUE4O7hFKCwtPqvM_w1JhrjcvM9IO9wD5WKdPS"/>
+<div class="bg-primary dark:bg-primary/30 p-4 rounded-xl rounded-br-none shadow-sm text-blue-900 dark:text-primary">
+<p class="text-sm leading-relaxed">That's amazing news! Thank you so much, Sarah. When would be the best time to sign the contract?</p>
+<p class="text-[10px] text-blue-600/60 dark:text-primary/60 mt-2 text-right">10:20 AM</p>
+</div>
+</div>
+<!-- Landlord Message -->
+<div class="flex items-end gap-3 max-w-[80%]">
+<img class="size-8 rounded-full object-cover" data-alt="Sarah Jenkins profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcbQBMXZWxYXneD4IqxYWFrTkHhurKNs9LelNEweLDjX3GKYEc9rIB4wV7ibPXORan3kOCEw2-Ue6X3CgtK6PY9mK9BDFBTwr_LSNlGs2luqeaxyRkyfrPvFyoxi0SpFGwivDhV-bQEuuPSv5nAIJxsrk7DrDSIsUHeAKKKTUUyH0l4byJU6uKQ4XCjgjVZRZIZ-QYWcG5-9Jfy3OkGroW3hRcFmTugfl_ugc62UMXk9gR-QCKTeOyl78TYgpa8aIAQbyedKRvEtJv"/>
+<div class="bg-white dark:bg-slate-800 p-4 rounded-xl rounded-bl-none shadow-sm">
+<p class="text-sm leading-relaxed">Great, I'll send the lease agreement over this afternoon. You can sign it digitally through the dashboard documents section.</p>
+<p class="text-[10px] text-slate-400 mt-2">10:24 AM</p>
+</div>
+</div>
+<div class="flex items-center gap-2 text-slate-400 italic text-xs px-11">
+<span class="flex gap-1">
+<span class="size-1 bg-slate-400 rounded-full animate-pulse"></span>
+<span class="size-1 bg-slate-400 rounded-full animate-pulse delay-75"></span>
+<span class="size-1 bg-slate-400 rounded-full animate-pulse delay-150"></span>
+</span>
+                        Sarah is typing...
+                    </div>
+</div>
+<!-- Input Area -->
+<div class="p-4 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-2 max-w-5xl mx-auto">
+<button class="p-2 text-slate-400 hover:text-blue-500 transition-colors">
+<span class="material-symbols-outlined">attach_file</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-blue-500 transition-colors">
+<span class="material-symbols-outlined">sentiment_satisfied</span>
+</button>
+<div class="flex-1 relative">
+<input class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary" placeholder="Type a message..." type="text"/>
+</div>
+<button class="bg-blue-600 dark:bg-primary text-white dark:text-blue-900 size-10 rounded-xl flex items-center justify-center hover:opacity-90 transition-opacity shadow-lg shadow-blue-500/20">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
