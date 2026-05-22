@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/mongoose';
 import Message from '@/models/Message';
 import Conversation from '@/models/Conversation';
+import { emitNewMessage } from '@/lib/messageEmitter';
 
 export async function GET(req: Request) {
   try {
@@ -31,7 +32,11 @@ export async function POST(req: Request) {
       $inc: { unreadCount: 1 }
     });
 
-    return NextResponse.json(message, { status: 201 });
+    // Broadcast the new message to all SSE subscribers of this conversation
+    const messageJson = message.toJSON();
+    emitNewMessage(body.conversationId, messageJson);
+
+    return NextResponse.json(messageJson, { status: 201 });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 400 });
   }
