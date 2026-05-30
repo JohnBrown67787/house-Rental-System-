@@ -2,13 +2,23 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useAuth } from "@/context/AuthContext";
+import { useEffect, useState } from "react";
+import { bookingApi } from "@/services/api";
 
 export default function LandlordDashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
+  const [pendingCount, setPendingCount] = useState(0);
+
+  useEffect(() => {
+    if (!user) return;
+    bookingApi.getByLandlordId(user.id)
+      .then(bookings => setPendingCount(bookings.filter(b => b.status === 'pending').length))
+      .catch(console.error);
+  }, [user]);
 
   return (
     <div className="flex h-screen overflow-hidden bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
@@ -40,16 +50,25 @@ export default function LandlordDashboardLayout({
             <span className="material-symbols-outlined">chat_bubble</span>
             <span>Messages</span>
           </Link>
+          <Link href="/landlord-dashboard" className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+            <span className="material-symbols-outlined">bookmark_added</span>
+            <span className="flex-1">Bookings</span>
+            {pendingCount > 0 && (
+              <span className="bg-amber-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[18px] text-center">
+                {pendingCount}
+              </span>
+            )}
+          </Link>
 
           <div className="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800">
             <Link href="/landlord-dashboard/profile" className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
               <span className="material-symbols-outlined">person</span>
               <span>Profile</span>
             </Link>
-            <Link href="/login" className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 transition-colors">
+            <button onClick={logout} className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 transition-colors">
               <span className="material-symbols-outlined">logout</span>
               <span>Logout</span>
-            </Link>
+            </button>
           </div>
         </nav>
         <div className="p-4 mt-auto">

@@ -107,6 +107,7 @@ export default function LandlordMessagesPage() {
       senderId: user.id,
       senderName: user.name,
       text,
+      isRead: false,
       createdAt: new Date().toISOString(),
     };
     setMessages(prev => [...prev, optimisticMsg]);

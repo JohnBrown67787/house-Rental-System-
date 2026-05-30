@@ -1,11 +1,14 @@
+'use client';
 import Link from "next/link";
 import Image from "next/image";
+import { useAuth } from "@/context/AuthContext";
 
 export default function AdminDashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const { logout } = useAuth();
   return (
     <div className="flex h-screen overflow-hidden bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display antialiased">
       {/* Sidebar Navigation */}
@@ -47,10 +50,10 @@ export default function AdminDashboardLayout({
             <p className="text-sm text-slate-700 dark:text-slate-300">Need help with the platform?</p>
             <button className="mt-3 w-full py-2 bg-white dark:bg-slate-800 text-xs font-bold rounded-lg border border-primary/50 shadow-sm">Contact Dev</button>
           </div>
-          <Link href="/login" className="flex items-center gap-3 w-full px-4 py-3 text-red-500 hover:bg-red-50 rounded-lg font-medium transition-colors">
+          <button onClick={logout} className="flex items-center gap-3 w-full px-4 py-3 text-red-500 hover:bg-red-50 rounded-lg font-medium transition-colors">
             <span className="material-symbols-outlined">logout</span>
             Logout
-          </Link>
+          </button>
         </div>
       </aside>
 

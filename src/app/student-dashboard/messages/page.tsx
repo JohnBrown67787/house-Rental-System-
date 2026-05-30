@@ -131,6 +131,7 @@ function MessagesContent() {
       senderId: user.id,
       senderName: user.name,
       text,
+      isRead: false,
       createdAt: new Date().toISOString(),
     };
     setMessages(prev => [...prev, optimisticMsg]);

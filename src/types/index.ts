@@ -51,6 +51,8 @@ export interface Booking {
   propertyImage?: string;
   studentId: string;
   studentName: string;
+  studentEmail?: string;
+  studentPhone?: string;
   landlordId: string;
   status: BookingStatus;
   moveInDate: string;

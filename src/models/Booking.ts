@@ -6,6 +6,8 @@ const bookingSchema = new mongoose.Schema({
   propertyImage: { type: String },
   studentId: { type: String, required: true },
   studentName: { type: String, required: true },
+  studentEmail: { type: String },
+  studentPhone: { type: String },
   landlordId: { type: String, required: true },
   status: { type: String, enum: ['pending', 'confirmed', 'rejected', 'cancelled'], default: 'pending' },
   moveInDate: { type: String, required: true },
@@ -17,7 +19,7 @@ const bookingSchema = new mongoose.Schema({
 bookingSchema.set('toJSON', {
   virtuals: true,
   versionKey: false,
-  transform: function (doc, ret) { delete ret._id; }
+  transform: function (doc, ret) { delete (ret as any)._id; }
 });
 
 export default mongoose.models.Booking || mongoose.model('Booking', bookingSchema);

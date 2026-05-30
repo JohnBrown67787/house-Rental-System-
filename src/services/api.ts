@@ -81,6 +81,16 @@ export const bookingApi = {
     if (!res.ok) throw new Error('Failed to add booking');
     return res.json();
   },
+
+  updateStatus: async (id: string, status: string): Promise<Booking> => {
+    const res = await fetch(`/api/bookings/${id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ status }),
+    });
+    if (!res.ok) throw new Error('Failed to update booking status');
+    return res.json();
+  },
 };
 
 // --- MESSAGING ---
@@ -92,10 +102,10 @@ export const messagingApi = {
   },
 
   getOrCreateConversation: async (
-    student: User, 
-    landlordId: string, 
-    landlordName: string, 
-    propertyId: string, 
+    student: { id: string },
+    landlordId: string,
+    landlordName: string,
+    propertyId: string,
     propertyTitle: string
   ): Promise<Conversation> => {
     const res = await fetch('/api/conversations', {

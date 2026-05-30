@@ -9,14 +9,38 @@ import type { Property, RoomType } from "@/types";
 
 const AMENITY_OPTIONS = ['WiFi', 'Water', 'Electricity', 'Security', 'Parking', 'Furnished', 'Cooking', 'CCTV'];
 const NEIGHBORHOODS = ['Molyko', 'Bonduma', 'Mile 17', 'Great Soppo', 'Dirty South', 'Buea Town', 'Clerks Quarter'];
+const MAX_IMAGES = 10;
+const MAX_DIMENSION = 1200;
+
+function compressImage(file: File): Promise<string> {
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      const img = new window.Image();
+      img.onload = () => {
+        const scale = Math.min(MAX_DIMENSION / img.width, MAX_DIMENSION / img.height, 1);
+        const canvas = document.createElement('canvas');
+        canvas.width = Math.round(img.width * scale);
+        canvas.height = Math.round(img.height * scale);
+        const ctx = canvas.getContext('2d')!;
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        resolve(canvas.toDataURL('image/jpeg', 0.8));
+      };
+      img.src = ev.target?.result as string;
+    };
+    reader.readAsDataURL(file);
+  });
+}
 
 export default function EditPropertyPage({ params }: { params: { id: string } }) {
   const router = useRouter();
   const { user } = useAuth();
-  
+
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
-  
+  const [error, setError] = useState('');
+  const [isDragging, setIsDragging] = useState(false);
+
   const [selectedAmenities, setSelectedAmenities] = useState<string[]>([]);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -51,19 +75,27 @@ export default function EditPropertyPage({ params }: { params: { id: string } })
   const toggleAmenity = (a: string) =>
     setSelectedAmenities((prev) => prev.includes(a) ? prev.filter((x) => x !== a) : [...prev, a]);
 
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files;
-    if (!files) return;
-    Array.from(files).forEach(file => {
-      const reader = new FileReader();
-      reader.onload = (ev) => {
-        if (ev.target?.result) {
-          setImages(prev => [...prev, ev.target!.result as string]);
-        }
-      };
-      reader.readAsDataURL(file);
-    });
+  const processFiles = async (files: FileList | File[]) => {
+    const arr = Array.from(files).filter(f => f.type.startsWith('image/'));
+    const slots = MAX_IMAGES - images.length;
+    if (slots <= 0) return;
+    const compressed = await Promise.all(arr.slice(0, slots).map(compressImage));
+    setImages(prev => [...prev, ...compressed]);
   };
+
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) processFiles(e.target.files);
+    e.target.value = '';
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(false);
+    if (e.dataTransfer.files) processFiles(e.dataTransfer.files);
+  };
+
+  const handleDragOver = (e: React.DragEvent) => { e.preventDefault(); setIsDragging(true); };
+  const handleDragLeave = () => setIsDragging(false);
 
   const removeImage = (index: number) => {
     setImages(prev => prev.filter((_, i) => i !== index));
@@ -71,11 +103,9 @@ export default function EditPropertyPage({ params }: { params: { id: string } })
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
     if (!user) return;
-    
+    setError('');
     setSubmitting(true);
-    
     try {
       const updatedProperty: Partial<Property> = {
         title,
@@ -89,12 +119,11 @@ export default function EditPropertyPage({ params }: { params: { id: string } })
         amenities: selectedAmenities,
         images: images.length > 0 ? images : ['https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&q=80&w=800'],
       };
-
       await propertyApi.update(params.id, updatedProperty);
-
       router.push('/landlord-dashboard/listings');
-    } catch (error) {
-      console.error('Error updating property:', error);
+    } catch (err) {
+      console.error('Error updating property:', err);
+      setError('Failed to save changes. Please try again.');
     } finally {
       setSubmitting(false);
     }
@@ -205,30 +234,50 @@ export default function EditPropertyPage({ params }: { params: { id: string } })
 
         {/* Image Upload */}
         <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 p-6 shadow-sm space-y-4">
-          <h3 className="text-base font-bold flex items-center gap-2">
-            <span className="material-symbols-outlined text-blue-600">photo_camera</span> Property Photos
-          </h3>
-          
+          <div className="flex items-center justify-between">
+            <h3 className="text-base font-bold flex items-center gap-2">
+              <span className="material-symbols-outlined text-blue-600">photo_camera</span> Property Photos
+            </h3>
+            <span className={`text-xs font-bold px-2 py-1 rounded-full ${images.length >= MAX_IMAGES ? 'bg-red-100 text-red-600' : 'bg-slate-100 text-slate-500'}`}>
+              {images.length}/{MAX_IMAGES} photos
+            </span>
+          </div>
+
           {images.length > 0 && (
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {images.map((img, i) => (
-                <div key={i} className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-800">
+                <div key={i} className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-800 group">
                   <Image src={img} alt={`Preview ${i+1}`} fill className="object-cover" />
-                  <button type="button" onClick={() => removeImage(i)} className="absolute top-2 right-2 p-1.5 bg-black/50 hover:bg-red-500 text-white rounded-lg transition-colors backdrop-blur-sm">
+                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <button type="button" onClick={() => removeImage(i)} className="absolute top-2 right-2 p-1.5 bg-black/50 hover:bg-red-500 text-white rounded-lg transition-colors backdrop-blur-sm opacity-0 group-hover:opacity-100">
                     <span className="material-symbols-outlined text-sm">close</span>
                   </button>
+                  {i === 0 && (
+                    <span className="absolute bottom-2 left-2 text-[10px] font-bold bg-blue-600 text-white px-2 py-0.5 rounded-full">Cover</span>
+                  )}
                 </div>
               ))}
             </div>
           )}
 
-          <label className="block border-2 border-dashed border-slate-200 dark:border-slate-700 rounded-xl p-10 text-center hover:border-blue-400 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer">
-            <span className="material-symbols-outlined text-5xl text-slate-300 mb-3 block">cloud_upload</span>
-            <span className="font-semibold text-slate-700 dark:text-slate-300 block">Click to upload or drag &amp; drop</span>
-            <span className="text-sm text-slate-500 mt-1 block">PNG, JPG up to 10MB each (max 10 photos)</span>
-            <input type="file" multiple accept="image/*" className="hidden" onChange={handleImageUpload} />
-          </label>
+          {images.length < MAX_IMAGES && (
+            <label
+              onDrop={handleDrop}
+              onDragOver={handleDragOver}
+              onDragLeave={handleDragLeave}
+              className={`block border-2 border-dashed rounded-xl p-10 text-center transition-colors cursor-pointer ${isDragging ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20' : 'border-slate-200 dark:border-slate-700 hover:border-blue-400 hover:bg-slate-50 dark:hover:bg-slate-800/50'}`}
+            >
+              <span className={`material-symbols-outlined text-5xl mb-3 block transition-colors ${isDragging ? 'text-blue-400' : 'text-slate-300'}`}>cloud_upload</span>
+              <span className="font-semibold text-slate-700 dark:text-slate-300 block">{isDragging ? 'Drop images here' : 'Click to upload or drag & drop'}</span>
+              <span className="text-sm text-slate-500 mt-1 block">PNG, JPG — up to {MAX_IMAGES - images.length} more photo{MAX_IMAGES - images.length !== 1 ? 's' : ''}</span>
+              <input type="file" multiple accept="image/*" className="hidden" onChange={handleImageUpload} />
+            </label>
+          )}
         </div>
+
+        {error && (
+          <p className="text-sm text-red-600 bg-red-50 border border-red-200 px-4 py-3 rounded-xl">{error}</p>
+        )}
 
         {/* Submit */}
         <div className="flex items-center justify-between">

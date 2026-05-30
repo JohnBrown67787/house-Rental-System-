@@ -8,7 +8,7 @@ export default function StudentDashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
 
   return (
     <div className="flex h-screen overflow-hidden bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
@@ -54,10 +54,10 @@ export default function StudentDashboardLayout({
             <span className="material-symbols-outlined">person</span>
             <span>Profile</span>
           </Link>
-          <Link href="/login" className="w-full flex items-center gap-3 px-4 py-3 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 rounded-xl font-medium transition-all group">
+          <button onClick={logout} className="w-full flex items-center gap-3 px-4 py-3 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 rounded-xl font-medium transition-all group">
             <span className="material-symbols-outlined">logout</span>
             <span>Logout</span>
-          </Link>
+          </button>
         </nav>
         
         <div className="p-4 m-4 bg-primary/20 dark:bg-primary/5 rounded-2xl border border-primary/40">

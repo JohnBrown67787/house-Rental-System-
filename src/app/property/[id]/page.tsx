@@ -28,7 +28,9 @@ export default function PropertyDetailsPage({ params }: { params: { id: string }
           ],
           amenities: ["Internal Toilet", "Constant Water", "Security Guard", "WiFi Available"],
           roomType: "studio",
-          bathType: "internal",
+          bathType: "private",
+          neighborhood: "Molyko",
+          bedsCount: 1,
           isAvailable: true,
           landlordId: "landlord-1",
           landlordName: "Mr. Erasmo Lafadi",
@@ -37,7 +39,7 @@ export default function PropertyDetailsPage({ params }: { params: { id: string }
           reviewCount: 24,
           status: 'verified',
           createdAt: new Date().toISOString()
-        } as Property);
+        });
       }
     }).catch(err => {
       console.error(err);
@@ -53,7 +55,9 @@ export default function PropertyDetailsPage({ params }: { params: { id: string }
         ],
         amenities: ["Internal Toilet", "Constant Water", "Security Guard", "WiFi Available"],
         roomType: "studio",
-        bathType: "internal",
+        bathType: "private",
+        neighborhood: "Molyko",
+        bedsCount: 1,
         isAvailable: true,
         landlordId: "landlord-1",
         landlordName: "Mr. Erasmo Lafadi",
@@ -62,7 +66,7 @@ export default function PropertyDetailsPage({ params }: { params: { id: string }
         reviewCount: 24,
         status: 'verified',
         createdAt: new Date().toISOString()
-      } as Property);
+      });
     });
   }, [params.id]);
   const [isSaved, setIsSaved] = useState(false);
@@ -82,13 +86,14 @@ export default function PropertyDetailsPage({ params }: { params: { id: string }
     }
     try {
       await bookingApi.add({
-        id: `booking-${Date.now()}`,
         propertyId: property!.id,
         propertyTitle: property!.title,
         propertyImage: property!.images[0],
         landlordId: property!.landlordId,
         studentId: user!.id,
         studentName: user!.name,
+        studentEmail: user!.email,
+        studentPhone: (user as any).phone || '',
         status: 'pending',
         moveInDate,
         duration,
@@ -96,7 +101,7 @@ export default function PropertyDetailsPage({ params }: { params: { id: string }
         totalAmount: property!.pricePerMonth * (duration === 'academic-year' ? 9 : 1),
       });
       setBookingSubmitted(true);
-      setTimeout(() => { setShowBookingModal(false); setBookingSubmitted(false); }, 2500);
+      setTimeout(() => { setShowBookingModal(false); setBookingSubmitted(false); }, 3000);
     } catch (err) {
       console.error(err);
     }

@@ -24,7 +24,7 @@ const propertySchema = new mongoose.Schema({
 propertySchema.set('toJSON', {
   virtuals: true,
   versionKey: false,
-  transform: function (doc, ret) { delete ret._id; }
+  transform: function (doc, ret) { delete (ret as any)._id; }
 });
 
 export default mongoose.models.Property || mongoose.model('Property', propertySchema);
